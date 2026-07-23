@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { APP_URL } from "../constants/common";
+import { APP_PDF_URL } from "../constants/common";
 
 const NAV_LINKS = [
   { href: "/#jak-zaczac", label: "Jak zacząć?" },
@@ -39,7 +39,7 @@ export function Navbar() {
             <div className="h-4 w-px bg-border" />
 
             <Link
-              href={APP_URL + "/app"}
+              href={APP_PDF_URL}
               className="rounded-lg border border-border px-4 py-2 text font-medium text-text-secondary transition-colors hover:border-primary hover:text-primary"
             >
               Zaloguj się
@@ -95,7 +95,7 @@ export function Navbar() {
             <div className="my-2 h-px bg-border" />
 
             <Link
-              href={APP_URL + "/app"}
+              href={APP_PDF_URL}
               onClick={() => setIsOpen(false)}
               className="rounded-lg border border-border px-4 py-2.5 text-center text-sm font-medium text-text-secondary transition-colors hover:border-primary hover:text-primary"
             >

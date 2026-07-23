@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { APP_URL, DISPLAYED_PHONE_NUMBER, EMAIL, PHONE_NUMBER } from "../constants/common";
+import { APP_PDF_URL, DISPLAYED_PHONE_NUMBER, EMAIL, PHONE_NUMBER } from "../constants/common";
 
 export function Footer() {
   return (
@@ -43,7 +43,7 @@ export function Footer() {
               <h4 className="font-semibold text-text-primary">Pozostałe</h4>
               <p>
                 <a
-                  href={APP_URL + "/app"}
+                  href={APP_PDF_URL}
                   className="text-text-muted transition-colors hover:text-primary"
                 >
                   Strefa Klienta (Zaloguj się)
