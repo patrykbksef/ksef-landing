@@ -26,13 +26,13 @@ export function Navbar() {
           <div className="hidden items-center gap-4 md:flex">
             <div className="flex items-center gap-4 font-medium text-text-secondary">
               {NAV_LINKS.map((link) => (
-                <Link
+                <a
                   key={link.href}
                   href={link.href}
                   className="transition-colors hover:text-primary"
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
             </div>
 
@@ -44,12 +44,12 @@ export function Navbar() {
             >
               Zaloguj się
             </Link>
-            <Link
+            <a
               href="/#kontakt"
               className="rounded-lg bg-primary px-4 py-2 text font-medium text-text-on-primary transition-colors hover:bg-primary-hover"
             >
               Zadzwoń do nas
-            </Link>
+            </a>
           </div>
 
           <button
@@ -82,14 +82,14 @@ export function Navbar() {
         >
           <div className="flex flex-col gap-1 p-5">
             {NAV_LINKS.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className="rounded-lg px-4 py-2.5 text-sm font-medium text-text-secondary transition-colors hover:bg-primary-light hover:text-primary"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
 
             <div className="my-2 h-px bg-border" />
@@ -101,13 +101,13 @@ export function Navbar() {
             >
               Zaloguj się
             </Link>
-            <Link
+            <a
               href="/#kontakt"
               onClick={() => setIsOpen(false)}
               className="rounded-lg bg-primary px-4 py-2.5 text-center text-sm font-medium text-text-on-primary transition-colors hover:bg-primary-hover"
             >
               Zadzwoń do nas
-            </Link>
+            </a>
           </div>
         </div>
       </div>
