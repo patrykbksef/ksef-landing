@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { APP_PDF_URL, DISPLAYED_PHONE_NUMBER, EMAIL, PHONE_NUMBER } from "../constants/common";
+import {
+  APP_PDF_URL,
+  DISPLAYED_PHONE_NUMBER,
+  EMAIL,
+} from "../constants/common";
+import { PhoneLink } from "./PhoneLink";
+import { CookieSettingsButton } from "./CookieSettingsButton";
 
 export function Footer() {
   return (
@@ -22,12 +28,9 @@ export function Footer() {
             <div className="space-y-2">
               <h4 className="font-semibold text-text-primary">Kontakt</h4>
               <p className="text-text-muted">
-                <a
-                  href={`tel:${PHONE_NUMBER}`}
-                  className="transition-colors hover:text-primary"
-                >
+                <PhoneLink className="transition-colors hover:text-primary">
                   {DISPLAYED_PHONE_NUMBER}
-                </a>
+                </PhoneLink>
               </p>
               <p className="text-text-muted">
                 <a
@@ -48,6 +51,17 @@ export function Footer() {
                 >
                   Strefa Klienta (Zaloguj się)
                 </a>
+              </p>
+              <p>
+                <Link
+                  href="/polityka-prywatnosci"
+                  className="text-text-muted transition-colors hover:text-primary"
+                >
+                  Polityka prywatności
+                </Link>
+              </p>
+              <p>
+                <CookieSettingsButton />
               </p>
             </div>
           </div>

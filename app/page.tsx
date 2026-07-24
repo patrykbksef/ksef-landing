@@ -1,4 +1,5 @@
-import { DISPLAYED_PHONE_NUMBER, EMAIL, PHONE_NUMBER } from "./constants/common";
+import { DISPLAYED_PHONE_NUMBER, EMAIL } from "./constants/common";
+import { PhoneLink } from "./components/PhoneLink";
 
 const softwareJsonLd = {
   "@context": "https://schema.org",
@@ -84,12 +85,9 @@ export default function Home() {
             >
               Prześlij wzory faktur do testu
             </a>
-            <a
-              href={`tel:${PHONE_NUMBER}`}
-              className="inline-flex items-center rounded-xl border border-border px-7 py-3.5 text-base font-semibold text-text-secondary transition-colors hover:border-primary hover:text-primary"
-            >
+            <PhoneLink className="inline-flex items-center rounded-xl border border-border px-7 py-3.5 text-base font-semibold text-text-secondary transition-colors hover:border-primary hover:text-primary">
               Zadzwoń: {DISPLAYED_PHONE_NUMBER}
-            </a>
+            </PhoneLink>
           </div>
 
           <p className="mt-6 text-sm text-text-muted">
@@ -545,12 +543,9 @@ export default function Home() {
                 Preferujesz rozmowę? Zadzwoń, chętnie odpowiemy na wszystkie
                 pytania.
               </p>
-              <a
-                href={`tel:${PHONE_NUMBER}`}
-                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-text-on-primary transition-colors hover:bg-primary-hover"
-              >
+              <PhoneLink className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-text-on-primary transition-colors hover:bg-primary-hover">
                 <span>📞</span> {DISPLAYED_PHONE_NUMBER}
-              </a>
+              </PhoneLink>
             </div>
 
             <div className="rounded-2xl border border-border bg-surface p-8 text-center">

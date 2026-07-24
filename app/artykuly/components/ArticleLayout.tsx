@@ -1,4 +1,5 @@
-import { DISPLAYED_PHONE_NUMBER, PHONE_NUMBER } from "@/app/constants/common";
+import { DISPLAYED_PHONE_NUMBER } from "@/app/constants/common";
+import { PhoneLink } from "@/app/components/PhoneLink";
 import Link from "next/link";
 
 type ArticleLayoutProps = {
@@ -53,12 +54,9 @@ export function ArticleLayout({
             >
               Skontaktuj się z&nbsp;nami
             </a>
-            <a
-              href={`tel:${PHONE_NUMBER}`}
-              className="inline-flex items-center rounded-xl border border-border px-7 py-3 font-semibold text-text-secondary transition-colors hover:border-primary hover:text-primary"
-            >
+            <PhoneLink className="inline-flex items-center rounded-xl border border-border px-7 py-3 font-semibold text-text-secondary transition-colors hover:border-primary hover:text-primary">
               Zadzwoń: {DISPLAYED_PHONE_NUMBER}
-            </a>
+            </PhoneLink>
           </div>
         </div>
       </article>

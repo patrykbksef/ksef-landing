@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import { CookieBanner } from "./components/CookieBanner";
+import { ConsentBootstrap } from "./components/ConsentBootstrap";
 import "./globals.css";
-import { APP_URL } from "./constants/common";
+import { APP_URL, GA_MEASUREMENT_ID } from "./constants/common";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -59,10 +63,26 @@ export default function RootLayout({
   return (
     <html lang="pl" className={`${inter.variable} antialiased`}>
       <body className="min-h-screen flex flex-col bg-background text-foreground font-sans">
+        <Script id="google-consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              analytics_storage: 'denied',
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              wait_for_update: 500
+            });
+          `}
+        </Script>
+        <ConsentBootstrap />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CookieBanner />
       </body>
+      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }
