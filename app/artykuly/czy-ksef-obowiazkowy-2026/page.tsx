@@ -1,27 +1,19 @@
-import type { Metadata } from "next";
 import { ArticleLayout } from "../components/ArticleLayout";
+import { getArticleMetadata } from "../articles";
 
-export const metadata: Metadata = {
-  title:
-    "Czy KSeF będzie obowiązkowy w 2026 roku? | Faktura do KSeF",
-  description:
-    "Sprawdź aktualne przepisy dotyczące obowiązkowego KSeF. Dowiedz się, od kiedy faktury ustrukturyzowane będą wymagane i jak przygotować firmę na zmiany.",
-};
+export const metadata = getArticleMetadata("czy-ksef-obowiazkowy-2026");
 
 export default function CzyKsefObowiazkowyPage() {
   return (
-    <ArticleLayout
-      title="Czy KSeF będzie obowiązkowy w 2026 roku?"
-      date="21 lipca 2026"
-      category="Prawo i przepisy"
-    >
+    <ArticleLayout slug="czy-ksef-obowiazkowy-2026">
       <p>
-        Temat obowiązkowego <strong>Krajowego Systemu e-Faktur (KSeF)</strong>{" "}
-        budzi ogromne zainteresowanie wśród przedsiębiorców. Po
-        kilkukrotnym przesuwaniu terminów, wielu właścicieli firm
-        zastanawia się, czy w&nbsp;2026 roku faktycznie będą musieli
-        przesyłać faktury wyłącznie przez KSeF. W&nbsp;tym artykule
-        zbieramy najważniejsze informacje.
+        <strong>Tak.</strong> Krajowy System e-Faktur (KSeF) jest
+        obowiązkowy od <strong>1 lutego 2026 r.</strong> dla firm, które
+        w&nbsp;2024 r. miały sprzedaż powyżej 200 mln zł (z&nbsp;VAT), oraz
+        od <strong>1 kwietnia 2026 r.</strong> dla wszystkich pozostałych
+        podatników. Do końca 2026 r. obowiązują jeszcze wyjątki dla
+        najmniejszych firm. Poniżej zbieramy terminy, wyjątki
+        i&nbsp;praktyczne wskazówki.
       </p>
 
       <h2>Co to jest KSeF?</h2>
@@ -30,77 +22,72 @@ export default function CzyKsefObowiazkowyPage() {
         prowadzony przez Ministerstwo Finansów, służący do wystawiania,
         przesyłania i&nbsp;przechowywania{" "}
         <strong>faktur ustrukturyzowanych</strong>. Faktury w&nbsp;KSeF
-        mają postać plików XML zgodnych ze schematem FA(2), co oznacza,
-        że mają ściśle określoną strukturę danych.
+        mają postać plików XML zgodnych ze schematem FA(3), co oznacza,
+        że mają ściśle określoną strukturę danych. Pliku PDF nie da się
+        wysłać do KSeF bezpośrednio &ndash; trzeba go najpierw zamienić na
+        XML.
       </p>
       <p>
-        System działa już od 2022 roku w&nbsp;trybie dobrowolnym &ndash;
-        firmy mogły z&nbsp;niego korzystać, ale nie musiały. Kluczowe
-        pytanie dotyczy tego, kiedy stanie się obowiązkowy.
+        System działał od 2022 roku w&nbsp;trybie dobrowolnym. Od 2026 roku
+        wystawianie faktur w&nbsp;KSeF jest obowiązkowe.
       </p>
 
-      <h2>Historia zmian terminów</h2>
-      <p>
-        Ministerstwo Finansów kilkukrotnie przesuwało termin wejścia
-        w&nbsp;życie obowiązkowego KSeF:
-      </p>
+      <h2>Od kiedy KSeF jest obowiązkowy?</h2>
       <ul>
         <li>
-          <strong>Pierwotny termin: 1 lipca 2024</strong> &ndash;
-          przesunięty ze względu na niedostateczną gotowość systemu
-          i&nbsp;awarie infrastruktury
+          <strong>1 lutego 2026 r.</strong> &ndash; firmy, które
+          w&nbsp;2024 r. miały sprzedaż powyżej 200 mln zł (z&nbsp;VAT)
         </li>
         <li>
-          <strong>Kolejny termin: 1 lutego 2026</strong> &ndash;
-          zaproponowany w&nbsp;nowelizacji ustawy o&nbsp;VAT
+          <strong>1 kwietnia 2026 r.</strong> &ndash; wszyscy pozostali
+          podatnicy
         </li>
         <li>
-          <strong>Aktualny stan</strong> &ndash; przepisy mogą ulec
-          dalszym zmianom w&nbsp;zależności od gotowości technologicznej
-          systemu
+          <strong>do 31 grudnia 2026 r.</strong> &ndash; można jeszcze
+          wystawiać faktury poza KSeF (papierowe lub elektroniczne), jeśli
+          suma sprzedaży z&nbsp;VAT na takich fakturach nie przekracza
+          10&nbsp;000&nbsp;zł w&nbsp;miesiącu
         </li>
       </ul>
       <p>
-        Niezależnie od dokładnej daty, jedno jest pewne:{" "}
-        <strong>
-          KSeF prędzej czy później stanie się obowiązkowy dla wszystkich
-          podatników VAT
-        </strong>
-        . Warto przygotować się na to już teraz.
+        Wcześniejsze terminy (m.in. 1 lipca 2024 r.) były przesuwane
+        z&nbsp;powodu problemów technicznych. Obecne daty wynikają
+        z&nbsp;nowelizacji ustawy o&nbsp;VAT i&nbsp;są potwierdzone przez
+        Ministerstwo Finansów na stronie{" "}
+        <a
+          href="https://ksef.podatki.gov.pl/od-kiedy-trzeba-wystawiac-faktury-w-ksef/"
+          rel="noopener"
+        >
+          ksef.podatki.gov.pl
+        </a>
+        .
       </p>
 
-      <h2>Kogo obejmie obowiązek?</h2>
-      <p>
-        Obowiązkowe korzystanie z&nbsp;KSeF ma dotyczyć:
-      </p>
+      <h2>Kogo dotyczy obowiązek?</h2>
       <ul>
         <li>
-          Wszystkich czynnych podatników VAT wystawiających faktury
+          Czynnych podatników VAT wystawiających faktury dla firm (B2B)
+          i&nbsp;instytucji publicznych
         </li>
+        <li>Podatników zwolnionych z&nbsp;VAT, którzy wystawiają faktury</li>
         <li>
-          Podmiotów zagranicznych zarejestrowanych jako podatnicy VAT
-          w&nbsp;Polsce
-        </li>
-        <li>
-          Firm korzystających z&nbsp;kas rejestrujących do wystawiania
-          faktur (z&nbsp;pewnymi wyjątkami i&nbsp;okresami przejściowymi)
+          Podmiotów zagranicznych ze stałym miejscem prowadzenia
+          działalności w&nbsp;Polsce
         </li>
       </ul>
       <p>
-        Małe firmy korzystające ze zwolnienia z&nbsp;VAT mogą być objęte
-        obowiązkiem w&nbsp;późniejszym terminie lub na uproszczonych
-        zasadach.
+        Faktury dla osób prywatnych (konsumentów) nie muszą trafiać do
+        KSeF.
       </p>
 
       <h2>Jak przygotować firmę na obowiązkowy KSeF?</h2>
 
       <h3>1. Sprawdź swój obecny system księgowy</h3>
       <p>
-        Większość nowoczesnych programów księgowych (np.&nbsp;Comarch
-        Optima, Subiekt, wFirma, Fakturownia) oferuje lub planuje
-        integrację z&nbsp;KSeF. Jeśli Twój program tego nie obsługuje,
-        rozważ zmianę lub skorzystanie z&nbsp;zewnętrznego narzędzia do
-        wysyłki faktur.
+        Większość programów księgowych (np.&nbsp;Comarch Optima, Subiekt,
+        wFirma, Fakturownia) ma już integrację z&nbsp;KSeF. Jeśli Twój
+        program tego nie obsługuje, rozważ zmianę lub skorzystanie
+        z&nbsp;zewnętrznego narzędzia do wysyłki faktur.
       </p>
 
       <h3>2. Zidentyfikuj problematyczne faktury</h3>
@@ -123,47 +110,48 @@ export default function CzyKsefObowiazkowyPage() {
         i&nbsp;bezpieczeństwo danych.
       </p>
 
-      <h3>4. Zacznij wcześniej niż konkurencja</h3>
+      <h3>4. Wykorzystaj okres przejściowy</h3>
       <p>
-        Firmy, które przygotują się na KSeF przed wejściem obowiązku
-        w&nbsp;życie, unikną stresu i&nbsp;chaosu w&nbsp;momencie
-        przymusowego przejścia. Darmowy okres testowy pozwoli Ci
-        spokojnie przetestować system na rzeczywistych dokumentach.
+        Do końca 2026 roku przepisy przejściowe łagodzą skutki błędów
+        w&nbsp;KSeF. To dobry moment, żeby przetestować wysyłkę na
+        rzeczywistych dokumentach i&nbsp;dopracować proces, zanim
+        zaczną obowiązywać kary.
       </p>
 
-      <h2>Co grozi za niekorzystanie z&nbsp;KSeF po wejściu obowiązku?</h2>
+      <h2>Co grozi za niekorzystanie z&nbsp;KSeF?</h2>
       <p>
-        Po wejściu w&nbsp;życie przepisów obowiązkowego KSeF, faktury
-        wystawione poza systemem mogą nie być uznawane jako prawidłowe
-        dokumenty podatkowe. Oznacza to:
+        Faktura, która powinna trafić do KSeF, a&nbsp;została wystawiona
+        poza systemem, nie spełnia wymogów przepisów. Oznacza to:
       </p>
       <ul>
         <li>
-          <strong>Sankcje finansowe</strong> &ndash; kary za brak
-          wystawiania faktur w&nbsp;wymaganym formacie
+          <strong>Sankcje finansowe</strong> &ndash; kary administracyjne
+          za wystawianie faktur poza KSeF mają obowiązywać od 1 stycznia
+          2027 r.
         </li>
         <li>
           <strong>Problemy z&nbsp;odliczeniem VAT</strong> &ndash;
-          kontrahenci mogą nie móc odliczyć VAT z&nbsp;faktur
-          wystawionych poza KSeF
+          kontrahenci mogą mieć problem z&nbsp;odliczeniem VAT
+          z&nbsp;faktur wystawionych poza KSeF
         </li>
         <li>
           <strong>Komplikacje kontrolne</strong> &ndash; organy skarbowe
-          będą oczekiwały pełnej historii faktur w&nbsp;systemie
+          oczekują pełnej historii faktur w&nbsp;systemie
         </li>
       </ul>
 
       <h2>Podsumowanie</h2>
       <p>
-        Obowiązkowy KSeF to kwestia czasu, nie &bdquo;czy&rdquo;, ale
-        &bdquo;kiedy&rdquo;. Niezależnie od tego, czy finalny termin to
-        2026 rok, czy późniejszy &ndash;{" "}
+        KSeF jest już obowiązkowy &ndash; od 1 lutego 2026 r. dla
+        największych firm i&nbsp;od 1 kwietnia 2026 r. dla pozostałych.
+        Do końca 2026 r. obowiązują wyjątki dla małej sprzedaży i&nbsp;
+        łagodniejsze zasady, a&nbsp;od 2027 r. zaczną obowiązywać kary.{" "}
         <strong>
-          warto przygotować swoją firmę już teraz
+          Jeśli Twoja działalność opiera się na wielopozycyjnych fakturach
+          PDF
         </strong>
-        . Szczególnie jeśli Twoja działalność opiera się na
-        wielopozycyjnych fakturach PDF, automatyzacja procesu wysyłki do
-        KSeF pozwoli zaoszczędzić czas i&nbsp;uniknąć kosztownych błędów.
+        , automatyzacja wysyłki do KSeF pozwoli zaoszczędzić czas
+        i&nbsp;uniknąć kosztownych błędów.
       </p>
     </ArticleLayout>
   );

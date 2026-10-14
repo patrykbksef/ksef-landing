@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: APP_URL + "/sitemap.xml",
+    sitemap: new URL("sitemap.xml", APP_URL).href,
   };
 }
