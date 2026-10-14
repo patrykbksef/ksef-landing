@@ -1,22 +1,48 @@
-import { DISPLAYED_PHONE_NUMBER } from "@/app/constants/common";
+import { APP_URL, DISPLAYED_PHONE_NUMBER } from "@/app/constants/common";
 import { PhoneLink } from "@/app/components/PhoneLink";
 import Link from "next/link";
+import { ARTICLES, type ArticleSlug } from "../articles";
 
 type ArticleLayoutProps = {
-  title: string;
-  date: string;
-  category: string;
+  slug: ArticleSlug;
   children: React.ReactNode;
 };
 
-export function ArticleLayout({
-  title,
-  date,
-  category,
-  children,
-}: ArticleLayoutProps) {
+const formatDate = (isoDate: string) =>
+  new Intl.DateTimeFormat("pl-PL", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(isoDate));
+
+export function ArticleLayout({ slug, children }: ArticleLayoutProps) {
+  const { title, description, category, publishedAt, updatedAt } =
+    ARTICLES[slug];
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description,
+    inLanguage: "pl-PL",
+    datePublished: publishedAt,
+    dateModified: updatedAt,
+    mainEntityOfPage: new URL(`artykuly/${slug}`, APP_URL).href,
+    image: new URL("og-image.png", APP_URL).href,
+    author: { "@type": "Organization", name: "Faktura do KSeF", url: APP_URL },
+    publisher: {
+      "@type": "Organization",
+      name: "Faktura do KSeF",
+      url: APP_URL,
+    },
+  };
+
   return (
     <div className="pt-28 pb-20 md:pt-36 md:pb-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <article className="mx-auto max-w-3xl px-6">
         <header className="mb-12">
           <Link
@@ -32,7 +58,15 @@ export function ArticleLayout({
             {title}
           </h1>
           <p className="mt-4 text-sm text-text-muted">
-            Opublikowano: {date}
+            Opublikowano:{" "}
+            <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>
+            {updatedAt !== publishedAt && (
+              <>
+                {" "}
+                &middot; Zaktualizowano:{" "}
+                <time dateTime={updatedAt}>{formatDate(updatedAt)}</time>
+              </>
+            )}
           </p>
         </header>
 

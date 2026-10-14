@@ -1,20 +1,11 @@
-import type { Metadata } from "next";
 import { ArticleLayout } from "../components/ArticleLayout";
+import { getArticleMetadata } from "../articles";
 
-export const metadata: Metadata = {
-  title:
-    "Jak wystawić fakturę za holowanie z OC sprawcy w KSeF? | Faktura do KSeF",
-  description:
-    "Poradnik dla firm pomocy drogowej i lawet: jak automatycznie przesyłać wielopozycyjne faktury za holowanie z OC sprawcy do Krajowego Systemu e-Faktur.",
-};
+export const metadata = getArticleMetadata("faktura-za-holowanie-ksef");
 
 export default function FakturaHolowanieKsefPage() {
   return (
-    <ArticleLayout
-      title="Jak wystawić fakturę za holowanie z OC sprawcy w KSeF?"
-      date="21 lipca 2026"
-      category="Dla lawet i pomocy drogowej"
-    >
+    <ArticleLayout slug="faktura-za-holowanie-ksef">
       <p>
         Jeśli prowadzisz firmę pomocy drogowej lub lawetę, doskonale
         znasz ten problem: ubezpieczalnia (PZU, Warta, Hestia, Ergo
@@ -62,7 +53,7 @@ export default function FakturaHolowanieKsefPage() {
           <strong>Wgrywasz PDF, system generuje XML</strong> &ndash;
           logujesz się do panelu, przesyłasz plik PDF, a&nbsp;system
           w&nbsp;kilka sekund przekształca go w&nbsp;plik XML zgodny ze
-          schematem KSeF FA(2) i&nbsp;wysyła go do Krajowego Systemu
+          schematem KSeF FA(3) i&nbsp;wysyła go do Krajowego Systemu
           e-Faktur.
         </li>
       </ol>

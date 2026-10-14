@@ -1,18 +1,41 @@
-import { DISPLAYED_PHONE_NUMBER, EMAIL } from "./constants/common";
+import {
+  APP_URL,
+  DISPLAYED_PHONE_NUMBER,
+  EMAIL,
+  PHONE_NUMBER,
+} from "./constants/common";
 import { PhoneLink } from "./components/PhoneLink";
 
 const softwareJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "Faktura do KSeF",
+  url: APP_URL,
+  inLanguage: "pl-PL",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description:
-    "Automatyczne wysyłanie wielopozycyjnych faktur PDF do Krajowego Systemu e-Faktur. Bez AI, bez abonamentu.",
-  offers: {
-    "@type": "Offer",
-    price: "150",
-    priceCurrency: "PLN",
+    "Konwerter faktur PDF do XML FA(3) z automatyczną wysyłką do Krajowego Systemu e-Faktur. Obsługuje wielopozycyjne faktury, np. od ubezpieczalni za holowanie. Bez AI, bez abonamentu.",
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Do 50 faktur miesięcznie",
+      price: "150",
+      priceCurrency: "PLN",
+    },
+    {
+      "@type": "Offer",
+      name: "Powyżej 50 faktur miesięcznie",
+      price: "250",
+      priceCurrency: "PLN",
+    },
+  ],
+  provider: {
+    "@type": "Organization",
+    name: "Faktura do KSeF",
+    url: APP_URL,
+    email: EMAIL,
+    telephone: PHONE_NUMBER,
   },
 };
 
@@ -44,6 +67,30 @@ const faqJsonLd = {
         text: "Tak, nasi obecni klienci wgrywają faktury za usługi pomocy drogowej i holowania z systemów wiodących Towarzystw Ubezpieczeniowych.",
       },
     },
+    {
+      "@type": "Question",
+      name: "Czy można wysłać fakturę PDF bezpośrednio do KSeF?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nie. KSeF przyjmuje tylko faktury w formacie XML zgodnym ze schematem FA(3). Plik PDF trzeba najpierw zamienić na XML – nasz konwerter robi to automatycznie i od razu wysyła fakturę do KSeF.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Ile kosztuje wysyłanie faktur PDF do KSeF?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "150 zł netto miesięcznie do 50 faktur i 250 zł netto powyżej 50 faktur. Jeśli w danym miesiącu nie wyślesz żadnej faktury, nie płacisz nic. Dopasowanie systemu do Twoich wzorów faktur jest bezpłatne.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy moje faktury trafiają do zewnętrznych serwisów AI?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nie. Program nie używa AI – odczytuje faktury na podstawie reguł przygotowanych pod Twoje wzory. Dane z faktury są zamieniane na XML i wysyłane prosto do KSeF.",
+      },
+    },
   ],
 };
 
@@ -70,8 +117,9 @@ export default function Home() {
             bez ręcznego przepisywania
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary md:text-xl">
-            Oszczędź godziny żmudnej pracy. Zmieniamy wielopozycyjne faktury
-            (np.&nbsp;od ubezpieczalni) w&nbsp;gotowe wysyłki do KSeF.{" "}
+            Oszczędź godziny żmudnej pracy. Nasz konwerter zamienia
+            wielopozycyjne faktury PDF (np.&nbsp;od ubezpieczalni) na XML
+            w&nbsp;formacie FA(3) i&nbsp;wysyła je do KSeF.{" "}
             <strong className="font-semibold text-text-primary">
               Gwarantujemy 100% poprawności
             </strong>{" "}
@@ -437,12 +485,14 @@ export default function Home() {
                   Prawo i&nbsp;przepisy
                 </span>
                 <h3 className="text-xl font-semibold leading-snug text-text-primary">
-                  Czy KSeF będzie obowiązkowy w&nbsp;2026 roku?
+                  Czy KSeF jest obowiązkowy w&nbsp;2026 roku? Terminy
+                  i&nbsp;wyjątki
                 </h3>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-text-secondary">
-                  Sprawdź aktualne przepisy i&nbsp;dowiedz się, jak przygotować
-                  firmę na obowiązkowe faktury ustrukturyzowane w&nbsp;Krajowym
-                  Systemie e-Faktur.
+                  KSeF obowiązuje od 1 lutego 2026 r. dla największych firm
+                  i&nbsp;od 1 kwietnia 2026 r. dla pozostałych. Sprawdź
+                  terminy, wyjątki do końca 2026 r. i&nbsp;jak przygotować
+                  firmę.
                 </p>
                 <a
                   href="/artykuly/czy-ksef-obowiazkowy-2026"
@@ -500,6 +550,41 @@ export default function Home() {
                       faktury za usługi pomocy drogowej i&nbsp;holowania
                     </strong>{" "}
                     z&nbsp;systemów wiodących Towarzystw Ubezpieczeniowych.
+                  </>
+                ),
+              },
+              {
+                q: "Czy można wysłać fakturę PDF bezpośrednio do KSeF?",
+                a: (
+                  <>
+                    Nie. KSeF przyjmuje tylko faktury w&nbsp;formacie{" "}
+                    <strong>XML zgodnym ze schematem FA(3)</strong>. Plik PDF
+                    trzeba najpierw zamienić na XML &ndash; nasz konwerter
+                    robi to automatycznie i&nbsp;od razu wysyła fakturę do
+                    KSeF.
+                  </>
+                ),
+              },
+              {
+                q: "Ile kosztuje wysyłanie faktur PDF do KSeF?",
+                a: (
+                  <>
+                    <strong>150&nbsp;zł netto</strong> miesięcznie do 50
+                    faktur i&nbsp;<strong>250&nbsp;zł netto</strong> powyżej
+                    50 faktur. Jeśli w&nbsp;danym miesiącu nie wyślesz żadnej
+                    faktury, nie płacisz nic. Dopasowanie systemu do Twoich
+                    wzorów faktur jest bezpłatne.
+                  </>
+                ),
+              },
+              {
+                q: "Czy moje faktury trafiają do zewnętrznych serwisów AI?",
+                a: (
+                  <>
+                    Nie. Program <strong>nie używa AI</strong> &ndash;
+                    odczytuje faktury na podstawie reguł przygotowanych pod
+                    Twoje wzory. Dane z&nbsp;faktury są zamieniane na XML
+                    i&nbsp;wysyłane prosto do KSeF.
                   </>
                 ),
               },

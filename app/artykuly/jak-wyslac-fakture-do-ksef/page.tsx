@@ -1,23 +1,14 @@
-import type { Metadata } from "next";
 import { ArticleLayout } from "../components/ArticleLayout";
+import { getArticleMetadata } from "../articles";
 
-export const metadata: Metadata = {
-  title:
-    "Jak wysłać fakturę PDF do KSeF krok po kroku? | Faktura do KSeF",
-  description:
-    "Praktyczny poradnik wysyłania faktur PDF do Krajowego Systemu e-Faktur. Dowiedz się, jak zamienić PDF na XML KSeF FA(2) bez ręcznego przepisywania danych.",
-};
+export const metadata = getArticleMetadata("jak-wyslac-fakture-do-ksef");
 
 export default function JakWyslacFakturePage() {
   return (
-    <ArticleLayout
-      title="Jak wysłać fakturę PDF do KSeF krok po kroku?"
-      date="21 lipca 2026"
-      category="Poradnik"
-    >
+    <ArticleLayout slug="jak-wyslac-fakture-do-ksef">
       <p>
         Krajowy System e-Faktur (KSeF) wymaga, aby faktury były przesyłane
-        w&nbsp;formacie <strong>XML zgodnym ze schematem FA(2)</strong>.
+        w&nbsp;formacie <strong>XML zgodnym ze schematem FA(3)</strong>.
         Problem polega na tym, że większość firm otrzymuje faktury
         w&nbsp;formacie PDF &ndash; czy to z&nbsp;systemów księgowych
         kontrahentów, czy ze skanów dokumentów papierowych. Jak więc
